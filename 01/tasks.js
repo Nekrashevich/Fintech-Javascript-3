@@ -4,9 +4,42 @@
  * @return {{min: number, max: number}} объект с минимумом и максимумом
  * '1 и 6.45, -2, но 8, а затем 15, то есть 2.7 и -1028' => { min: -1028, max: 15 }
  */
-function getMinMax(string) {
 
+function getMinMax(string) {
+   
+let a;
+
+const obj = {
+     min: Infinity,
+     max: -Infinity
+};
+  
+  while(string.length > 0){
+	  
+    while (isNaN(parseFloat(string))){
+      string = string.slice(1);
+	  
+      if (string.length === 0){
+        return obj;
+      }
+    }			 
+		
+    a = parseFloat(string);		   
+    obj.min = Math.min(a, obj.min);
+    obj.max = Math.max(a, obj.max);      
+ 
+    while (parseFloat(string)){			
+      string = string.slice(1);
+	  
+      if (string.length === 0){		  
+        return obj;
+      }
+    }    
+  }
+  
+  return obj;    
 }
+
 
 /* ============================================= */
 
@@ -17,12 +50,15 @@ function getMinMax(string) {
  */
 
 function fibonacciSimple(x) {
-	if (x===1){
-	    return 1;
-	}
-	if (x===0){
-		return 0;
-	}
+	
+  if (x===1){
+    return 1;
+  }
+  
+  if (x===0){
+    return 0;
+  }
+  
   return fibonacciSimple(x-1)+fibonacciSimple(x-2);
 }
 
@@ -34,9 +70,20 @@ function fibonacciSimple(x) {
  * @param {number} x номер числа
  * @return {number} число под номером х
  */
+
 function fibonacciWithCache(x) {
-  return x;
+	
+  if (arr[x]!==undefined){
+    return arr[x];
+  }
+  
+  arr[x]=fibonacciCache(x-1)+fibonacciCache(x-2);
+  
+  return arr[x];
 }
+
+arr=[0,1];
+
 
 /* ============================================= */
 
@@ -66,8 +113,48 @@ function printNumbers(max, cols) {
  * @param  {string} value
  * @return {string}
  */
-function rle(input) {
 
+function rle(input) {
+	
+let count=0,
+arr='',
+early=input[0];
+
+  for(let i=0;i<input.length;i++){
+	
+    if (input[i]===early){
+      count+=1;
+		
+      if (i===input.length-1){		
+        arr+=early;
+        arr+=count;
+      }	
+    }
+	
+    else if (i===input.length-1){
+		
+      if (input[i]!==early){		
+        add(count, early);
+        arr+=input[i];
+      }
+    }	
+	
+    else{		
+      add(count, early);
+      count=1;
+      early=input[i];	
+    }	
+  }	
+
+  function add(count, early){
+    arr+=early;
+	
+    if (count!==1){
+      arr+=count;	
+    }
+  }
+
+  return arr;
 }
 
 module.exports = {
