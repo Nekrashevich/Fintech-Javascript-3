@@ -77,7 +77,7 @@ function fibonacciWithCache(x) {
     return arr[x];
   }
   
-  arr[x]=fibonacciCache(x-1)+fibonacciCache(x-2);
+  arr[x]=fibonacciWithCache(x-1)+fibonacciWithCache(x-2);
   
   return arr[x];
 }
