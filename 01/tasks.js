@@ -19,7 +19,7 @@ const obj = {
     while (isNaN(parseFloat(string))){
       string = string.slice(1);
 	  
-      if (string.length === 0){
+      if (string.length == 0){
         return obj;
       }
     }			 
@@ -28,12 +28,12 @@ const obj = {
     obj.min = Math.min(a, obj.min);
     obj.max = Math.max(a, obj.max);      
  
-    while (parseFloat(string)){			
-      string = string.slice(1);
-	  
+    while (parseFloat(string)||string[0]==0){			
+      string = string.slice(1);	  
       if (string.length === 0){		  
         return obj;
-      }
+      }	  
+	  if (string[0]==' ') break;
     }    
   }
   
@@ -102,8 +102,42 @@ arr=[0,1];
  * @param  {number} cols количество столбцов
  * @return {string}
  */
+ 
 function printNumbers(max, cols) {
 
+let result = '', rows, x;   
+ 
+  if ((max+1)%cols === 0 )
+    rows = (max+1)/cols;   
+
+  else
+    rows=1+Math.floor((max+1)/cols);
+ 
+  for (let i=0; i<rows; ++i){
+	  
+    for (let j=0; i+j*rows<max+1; ++j){
+      x=i+j*rows;
+	  
+      if (x<10) 
+        result+=' ';
+	
+      else 
+        result+='';
+	
+      if (j>0) 
+        result+=' ';
+	
+      else
+        result+='';
+       
+    result+=String(x);
+    }
+  
+    if (i<rows - 1)
+      result+='\n';    
+  }
+ 
+  return result;
 }
 
 /* ============================================= */
@@ -116,9 +150,8 @@ function printNumbers(max, cols) {
 
 function rle(input) {
 	
-let count=0,
-arr='',
-early=input[0];
+let count=0, arr='',
+    early=input[0];
 
   for(let i=0;i<input.length;i++){
 	
