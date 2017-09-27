@@ -5,42 +5,68 @@
  * '1 и 6.45, -2, но 8, а затем 15, то есть 2.7 и -1028' => { min: -1028, max: 15 }
  */
 
-function getMinMax(string) {
-   
-let a;
+/* function getMinMax(string) {
+  let a;
 
-const obj = {
-     min: Infinity,
-     max: -Infinity
-};
-  
-  while(string.length > 0){
-	  
-    while (isNaN(parseFloat(string))){
+  const obj = {
+    min: Infinity,
+    max: -Infinity
+  };
+
+  while (string.length > 0) {
+    while (isNaN(parseFloat(string))) {
       string = string.slice(1);
-	  
-      if (string.length == 0){
+
+      if (string.length === 0) {
         return obj;
       }
-    }			 
-		
-    a = parseFloat(string);		   
+    }
+
+    a = parseFloat(string);
     obj.min = Math.min(a, obj.min);
-    obj.max = Math.max(a, obj.max);      
- 
-    while (parseFloat(string)||string[0]==0){			
-      string = string.slice(1);	  
-      if (string.length === 0){		  
+    obj.max = Math.max(a, obj.max);
+
+    while (parseFloat(string) || string[0] === 0) {
+      string = string.slice(1);
+      if (string.length === 0) {
         return obj;
-      }	  
-	  if (string[0]==' ') break;
-    }    
+      }
+      if (string[0] === ' ') { break; }
+    }
   }
-  
-  return obj;    
+
+  return obj;
+} */
+
+function getMinMax(string) {
+  var a,
+    min = Infinity,
+    max = -Infinity;
+
+  while (string.length > 0) {
+    while (isNaN(parseFloat(string))) {
+      string = string.slice(1);
+
+      if (string.length === 0) {
+        return { min, max };
+      }
+    }
+
+    a = parseFloat(string);
+    min = Math.min(a, min);
+    max = Math.max(a, max);
+
+    while (parseFloat(string) || string[0] === 0) {
+      string = string.slice(1);
+      if (string.length === 0) {
+        return { min, max };
+      }
+      if (string[0] === ' ') { break; }
+    }
+  }
+
+  return { min, max };
 }
-
-
 /* ============================================= */
 
 /**
@@ -50,16 +76,15 @@ const obj = {
  */
 
 function fibonacciSimple(x) {
-	
-  if (x===1){
+  if (x === 1) {
     return 1;
   }
-  
-  if (x===0){
+
+  if (x === 0) {
     return 0;
   }
-  
-  return fibonacciSimple(x-1)+fibonacciSimple(x-2);
+
+  return fibonacciSimple(x - 1) + fibonacciSimple(x - 2);
 }
 
 /* ============================================= */
@@ -72,17 +97,16 @@ function fibonacciSimple(x) {
  */
 
 function fibonacciWithCache(x) {
-	
-  if (arr[x]!==undefined){
+  if (arr[x] !== undefined) {
     return arr[x];
   }
-  
-  arr[x]=fibonacciWithCache(x-1)+fibonacciWithCache(x-2);
-  
+
+  arr[x] = fibonacciWithCache(x - 1) + fibonacciWithCache(x - 2);
+
   return arr[x];
 }
 
-arr=[0,1];
+var arr = [0, 1];
 
 
 /* ============================================= */
@@ -102,41 +126,28 @@ arr=[0,1];
  * @param  {number} cols количество столбцов
  * @return {string}
  */
- 
+
 function printNumbers(max, cols) {
+  let result = '',
+    rows,
+    x;
 
-let result = '', rows, x;   
- 
-  if ((max+1)%cols === 0 )
-    rows = (max+1)/cols;   
+  if ((max + 1) % cols === 0) { rows = (max + 1) / cols; } else { rows = 1 + Math.floor((max + 1) / cols); }
 
-  else
-    rows=1+Math.floor((max+1)/cols);
- 
-  for (let i=0; i<rows; ++i){
-	  
-    for (let j=0; i+j*rows<max+1; ++j){
-      x=i+j*rows;
-	  
-      if (x<10) 
-        result+=' ';
-	
-      else 
-        result+='';
-	
-      if (j>0) 
-        result+=' ';
-	
-      else
-        result+='';
-       
-    result+=String(x);
+  for (let i = 0; i < rows; ++i) {
+    for (let j = 0; i + j * rows < max + 1; ++j) {
+      x = i + j * rows;
+
+      if (x < 10) { result += ' '; } else { result += ''; }
+
+      if (j > 0) { result += ' '; } else { result += ''; }
+
+      result += String(x);
     }
-  
-    if (i<rows - 1)
-      result+='\n';    
+
+    if (i < rows - 1) { result += '\n'; }
   }
- 
+
   return result;
 }
 
@@ -149,41 +160,35 @@ let result = '', rows, x;
  */
 
 function rle(input) {
-	
-let count=0, arr='',
-    early=input[0];
+  let count = 0,
+    arr = '',
+    early = input[0];
 
-  for(let i=0;i<input.length;i++){
-	
-    if (input[i]===early){
-      count+=1;
-		
-      if (i===input.length-1){		
-        arr+=early;
-        arr+=count;
-      }	
-    }
-	
-    else if (i===input.length-1){
-		
-      if (input[i]!==early){		
-        add(count, early);
-        arr+=input[i];
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === early) {
+      count += 1;
+
+      if (i === input.length - 1) {
+        arr += early;
+        arr += count;
       }
-    }	
-	
-    else{		
+    } else if (i === input.length - 1) {
+      if (input[i] !== early) {
+        add(count, early);
+        arr += input[i];
+      }
+    } else {
       add(count, early);
-      count=1;
-      early=input[i];	
-    }	
-  }	
+      count = 1;
+      early = input[i];
+    }
+  }
 
-  function add(count, early){
-    arr+=early;
-	
-    if (count!==1){
-      arr+=count;	
+  function add(count, early) {
+    arr += early;
+
+    if (count !== 1) {
+      arr += count;
     }
   }
 
