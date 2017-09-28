@@ -5,42 +5,8 @@
  * '1 и 6.45, -2, но 8, а затем 15, то есть 2.7 и -1028' => { min: -1028, max: 15 }
  */
 
-/* function getMinMax(string) {
-  let a;
-
-  const obj = {
-    min: Infinity,
-    max: -Infinity
-  };
-
-  while (string.length > 0) {
-    while (isNaN(parseFloat(string))) {
-      string = string.slice(1);
-
-      if (string.length === 0) {
-        return obj;
-      }
-    }
-
-    a = parseFloat(string);
-    obj.min = Math.min(a, obj.min);
-    obj.max = Math.max(a, obj.max);
-
-    while (parseFloat(string) || string[0] === 0) {
-      string = string.slice(1);
-      if (string.length === 0) {
-        return obj;
-      }
-      if (string[0] === ' ') { break; }
-    }
-  }
-
-  return obj;
-} */
-
 function getMinMax(string) {
-  var a,
-    min = Infinity,
+  var min = Infinity,
     max = -Infinity;
 
   while (string.length > 0) {
@@ -52,11 +18,10 @@ function getMinMax(string) {
       }
     }
 
-    a = parseFloat(string);
-    min = Math.min(a, min);
-    max = Math.max(a, max);
+    min = Math.min(parseFloat(string), min);
+    max = Math.max(parseFloat(string), max);
 
-    while (parseFloat(string) || string[0] === 0) {
+    while (parseFloat(string) || string[0] === '0') {
       string = string.slice(1);
       if (string.length === 0) {
         return { min, max };
@@ -67,6 +32,7 @@ function getMinMax(string) {
 
   return { min, max };
 }
+
 /* ============================================= */
 
 /**
@@ -132,17 +98,16 @@ function printNumbers(max, cols) {
     rows,
     x;
 
-  if ((max + 1) % cols === 0) { rows = (max + 1) / cols; } else { rows = 1 + Math.floor((max + 1) / cols); }
+  // if ((max + 1) % cols === 0) { rows = (max + 1) / cols; } else { rows = 1 + Math.floor((max + 1) / cols); }
+  rows = ((max + 1) % cols === 0) ? (max + 1) / cols : 1 + Math.floor((max + 1) / cols);
 
-  for (let i = 0; i < rows; ++i) {
-    for (let j = 0; i + j * rows < max + 1; ++j) {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; i + j * rows < max + 1; j++) {
       x = i + j * rows;
 
-      if (x < 10) { result += ' '; } else { result += ''; }
-
-      if (j > 0) { result += ' '; } else { result += ''; }
-
-      result += String(x);
+      result += (x < 10) ? ' ' : '';
+      result += (j > 0) ? ' ' : '';
+      result += x;
     }
 
     if (i < rows - 1) { result += '\n'; }
@@ -159,9 +124,10 @@ function printNumbers(max, cols) {
  * @return {string}
  */
 
+
 function rle(input) {
   let count = 0,
-    arr = '',
+    result = '',
     early = input[0];
 
   for (let i = 0; i < input.length; i++) {
@@ -169,13 +135,13 @@ function rle(input) {
       count += 1;
 
       if (i === input.length - 1) {
-        arr += early;
-        arr += count;
+        result += early;
+        result += count;
       }
     } else if (i === input.length - 1) {
       if (input[i] !== early) {
         add(count, early);
-        arr += input[i];
+        result += input[i];
       }
     } else {
       add(count, early);
@@ -185,15 +151,16 @@ function rle(input) {
   }
 
   function add(count, early) {
-    arr += early;
+    result += early;
 
     if (count !== 1) {
-      arr += count;
+      result += count;
     }
   }
 
-  return arr;
+  return result;
 }
+
 
 module.exports = {
   getMinMax,
