@@ -1,4 +1,4 @@
-/**hi there
+/** hi there
  * Исправьте проблему с таймером: должны выводиться числа от 0 до 9.
  * Доп. задание: предложите несколько вариантов решения.
  */
@@ -45,7 +45,13 @@ function sum(x) {
  * @return {boolean}
  */
 function anagram(first, second) {
-  return false;
+  for (let i = 0; i < first.length; i++) {
+    if (second.indexOf(first[i]) === -1) {
+      return false;
+    }
+    second = second.substring(0, second.indexOf(first[i])).concat(second.substring(second.indexOf(first[i]) + 1));
+  }
+  return (second.length === 0);
 }
 
 /*= ============================================ */
@@ -56,9 +62,17 @@ function anagram(first, second) {
  * @param {Array<number>} исходный массив
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
+
 function getUnique(arr) {
-  return [];
+  const obj = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    obj[arr[i]] = 0;
+  }
+
+  return Object.keys(obj);
 }
+
 
 /**
  * Найдите пересечение двух массивов
@@ -67,7 +81,16 @@ function getUnique(arr) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getIntersection(first, second) {
-  return [];
+  var result = [];
+
+  for (let i = 0; i < first.length; i++) {
+    if (second.indexOf(first[i]) !== -1) {
+      result.push(first[i]);
+      second.pop(second.indexOf(first[i]));
+    }
+  }
+
+  return getUnique(result);
 }
 
 /* ============================================= */
