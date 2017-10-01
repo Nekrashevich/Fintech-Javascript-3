@@ -3,7 +3,7 @@
  * Доп. задание: предложите несколько вариантов решения.
  */
 function timer(logger = console.log) {
-  for (var i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++) {
     setTimeout(() => {
       logger(i);
     }, 100);
@@ -33,7 +33,11 @@ function customBind(func, context, ...args) {
  * sum :: void -> Number
  */
 function sum(x) {
-  return 0;
+  if (x === undefined) {
+    return 0;
+  }
+
+  return function f(newarg) { return (newarg === undefined) ? x : sum(newarg + x); };
 }
 
 /*= ============================================ */
@@ -81,7 +85,7 @@ function getUnique(arr) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getIntersection(first, second) {
-  let result = [];
+  const result = [];
 
   for (let i = 0; i < first.length; i++) {
     if (second.indexOf(first[i]) !== -1) {
@@ -108,9 +112,19 @@ function getIntersection(first, second) {
  * @param  {string} right
  * @return {boolean}
  */
-function isIsomorphic(left, right) {
 
+function isIsomorphic(left, right) {
+  let flag = false;
+
+  for (let i = 0; i < left.length; i++) {
+    if (left[i] !== right[i]) {
+      if (flag === true || left.substring(i + 1).length !== right.substring(i + 1).length) { return false; }
+      flag = true;
+    }
+  }
+  return true;
 }
+
 
 module.exports = {
   timer,
