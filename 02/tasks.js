@@ -19,10 +19,10 @@ function timer(logger = console.log) {
  * @param {Array<any>} args массив аргументов
  * @return {Function} функция с нужным контекстом
  */
+
 function customBind(func, context, ...args) {
-
+  return function f(...newarg) { return func.apply(context, args.concat(newarg)); };
 }
-
 /*= ============================================ */
 
 /**
