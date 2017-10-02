@@ -2,7 +2,9 @@
  * Исправьте проблему с таймером: должны выводиться числа от 0 до 9.
  * Доп. задание: предложите несколько вариантов решения.
  */
-/* function timer(logger = console.log) {
+/* ---first---
+
+function timer(logger = console.log) {
   for (let i = 0; i < 10; i++) {
     setTimeout(() => {
       logger(i);
@@ -10,9 +12,25 @@
   }
 } */
 
+/* ---second---
+
 function timer(logger = console.log) {
   for (var i = 0; i < 10; i++) {
     setTimeout((x => () => logger(x))(i), 100);
+  }
+} */
+
+// ---thrid---
+
+function timer(logger = console.log) {
+  const arr = {};
+
+  for (var i = 0; i < 10; i++) {
+    arr[i] = 1000;
+    type(i);
+  }
+  function type(key) {
+    setTimeout(() => { logger(key); }, arr[key]);
   }
 }
 
