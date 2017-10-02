@@ -2,11 +2,17 @@
  * Исправьте проблему с таймером: должны выводиться числа от 0 до 9.
  * Доп. задание: предложите несколько вариантов решения.
  */
-function timer(logger = console.log) {
+/* function timer(logger = console.log) {
   for (let i = 0; i < 10; i++) {
     setTimeout(() => {
       logger(i);
     }, 100);
+  }
+} */
+
+function timer(logger = console.log) {
+  for (var i = 0; i < 10; i++) {
+    setTimeout((x => () => logger(x))(i), 100);
   }
 }
 
@@ -50,10 +56,12 @@ function sum(x) {
  */
 function anagram(first, second) {
   for (let i = 0; i < first.length; i++) {
-    if (second.indexOf(first[i]) === -1) {
+    const elpointer = second.indexOf(first[i]);
+
+    if (elpointer === -1) {
       return false;
     }
-    second = second.substring(0, second.indexOf(first[i])).concat(second.substring(second.indexOf(first[i]) + 1));
+    second = second.substring(0, elpointer).concat(second.substring(elpointer + 1));
   }
   return (second.length === 0);
 }
@@ -69,12 +77,13 @@ function anagram(first, second) {
 
 function getUnique(arr) {
   const obj = {};
+  let unicArr = [];
 
   for (let i = 0; i < arr.length; i++) {
     obj[arr[i]] = 0;
   }
-
-  return Object.keys(obj);
+  unicArr = Object.keys(obj);
+  return unicArr.sort((a, b) => a - b);
 }
 
 
@@ -85,14 +94,7 @@ function getUnique(arr) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getIntersection(first, second) {
-  const result = [];
-
-  for (let i = 0; i < first.length; i++) {
-    if (second.indexOf(first[i]) !== -1) {
-      result.push(first[i]);
-      second.pop(second.indexOf(first[i]));
-    }
-  }
+  const result = first.filter(elem => second.indexOf(elem) !== -1);
 
   return getUnique(result);
 }
@@ -116,9 +118,11 @@ function getIntersection(first, second) {
 function isIsomorphic(left, right) {
   let flag = false;
 
+  if (right.length !== left.length) { return false; }
+
   for (let i = 0; i < left.length; i++) {
     if (left[i] !== right[i]) {
-      if (flag === true || left.substring(i + 1).length !== right.substring(i + 1).length) { return false; }
+      if (flag === true) { return false; }
       flag = true;
     }
   }
