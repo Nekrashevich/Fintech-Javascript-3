@@ -20,18 +20,28 @@ function timer(logger = console.log) {
   }
 } */
 
-// ---thrid---
+/* ---thrid---
 
 function timer(logger = console.log) {
-  const arr = {};
-
   for (var i = 0; i < 10; i++) {
-    arr[i] = 1000;
     type(i);
   }
   function type(key) {
-    setTimeout(() => { logger(key); }, arr[key]);
+    setTimeout(() => { logger(key); }, 100);
   }
+} */
+
+// ---chetvertoe---
+
+function timer(logger = console.log) {
+  var arr = [];
+
+
+  for (var i = 0; i < 10; i++) {
+    arr.push(i);
+  }
+
+  return arr.map(i => setTimeout(() => logger(i), 100 * i));
 }
 
 /*= ============================================ */
