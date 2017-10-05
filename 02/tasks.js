@@ -52,7 +52,7 @@ function timer(logger = console.log) {
  * @param {any} context контекст
  * @param {Array<any>} args массив аргументов
  * @return {Function} функция с нужным контекстом
- */
+ */ 
 
 function customBind(func, context, ...args) {
   return function f(...newarg) { return func.apply(context, args.concat(newarg)); };
@@ -121,11 +121,33 @@ function getUnique(arr) {
  * @param {Array<number>, Array<number>} first, second исходные массивы
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
-function getIntersection(first, second) {
-  const result = first.filter(elem => second.indexOf(elem) !== -1);
 
-  return getUnique(result);
+
+function getIntersection(first, second) {
+  let result = [],
+    arr1 = first.slice(0),
+    arr2 = second.slice(0),
+    aLast = arr1.length - 1,
+    bLast = arr2.length - 1;
+
+  while (aLast >= 0 && bLast >= 0) {
+    if (arr1[aLast] > arr2[bLast]) {
+      arr1.pop();
+      aLast--;
+    } else if (arr1[aLast] < arr2[bLast]) {
+      arr2.pop();
+      bLast--;
+    } else {
+      result.push(arr1.pop());
+      arr2.pop();
+      aLast--;
+      bLast--;
+    }
+  }
+  return result.sort((a, b) => a - b);
 }
+
+
 
 /* ============================================= */
 
