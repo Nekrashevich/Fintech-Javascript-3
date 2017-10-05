@@ -147,8 +147,6 @@ function getIntersection(first, second) {
   return result.sort((a, b) => a - b);
 }
 
-
-
 /* ============================================= */
 
 /**
