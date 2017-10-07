@@ -1,13 +1,47 @@
-/**
+/** hi there
  * Исправьте проблему с таймером: должны выводиться числа от 0 до 9.
  * Доп. задание: предложите несколько вариантов решения.
  */
+/* ---first---
+
 function timer(logger = console.log) {
-  for (var i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++) {
     setTimeout(() => {
       logger(i);
     }, 100);
   }
+} */
+
+/* ---second---
+
+function timer(logger = console.log) {
+  for (var i = 0; i < 10; i++) {
+    setTimeout((x => () => logger(x))(i), 100);
+  }
+} */
+
+/* ---thrid---
+
+function timer(logger = console.log) {
+  for (var i = 0; i < 10; i++) {
+    type(i);
+  }
+  function type(key) {
+    setTimeout(() => { logger(key); }, 100);
+  }
+} */
+
+// ---chetvertoe---
+
+function timer(logger = console.log) {
+  var arr = [];
+
+
+  for (var i = 0; i < 10; i++) {
+    arr.push(i);
+  }
+
+  return arr.map(i => setTimeout(() => logger(i), 100 * i));
 }
 
 /*= ============================================ */
@@ -18,11 +52,11 @@ function timer(logger = console.log) {
  * @param {any} context контекст
  * @param {Array<any>} args массив аргументов
  * @return {Function} функция с нужным контекстом
- */
+ */ 
+
 function customBind(func, context, ...args) {
-
+  return function f(...newarg) { return func.apply(context, args.concat(newarg)); };
 }
-
 /*= ============================================ */
 
 /**
@@ -33,7 +67,11 @@ function customBind(func, context, ...args) {
  * sum :: void -> Number
  */
 function sum(x) {
-  return 0;
+  if (x === undefined) {
+    return 0;
+  }
+
+  return function f(newarg) { return (newarg === undefined) ? x : sum(newarg + x); };
 }
 
 /*= ============================================ */
@@ -45,7 +83,15 @@ function sum(x) {
  * @return {boolean}
  */
 function anagram(first, second) {
-  return false;
+  for (let i = 0; i < first.length; i++) {
+    const elpointer = second.indexOf(first[i]);
+
+    if (elpointer === -1) {
+      return false;
+    }
+    second = second.substring(0, elpointer).concat(second.substring(elpointer + 1));
+  }
+  return (second.length === 0);
 }
 
 /*= ============================================ */
@@ -56,9 +102,18 @@ function anagram(first, second) {
  * @param {Array<number>} исходный массив
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
+
 function getUnique(arr) {
-  return [];
+  const obj = {};
+  let unicArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    obj[arr[i]] = 0;
+  }
+  unicArr = Object.keys(obj);
+  return unicArr.sort((a, b) => a - b);
 }
+
 
 /**
  * Найдите пересечение двух массивов
@@ -66,8 +121,30 @@ function getUnique(arr) {
  * @param {Array<number>, Array<number>} first, second исходные массивы
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
+
+
 function getIntersection(first, second) {
-  return [];
+  let result = [],
+    arr1 = first.slice(0),
+    arr2 = second.slice(0),
+    aLast = arr1.length - 1,
+    bLast = arr2.length - 1;
+
+  while (aLast >= 0 && bLast >= 0) {
+    if (arr1[aLast] > arr2[bLast]) {
+      arr1.pop();
+      aLast--;
+    } else if (arr1[aLast] < arr2[bLast]) {
+      arr2.pop();
+      bLast--;
+    } else {
+      result.push(arr1.pop());
+      arr2.pop();
+      aLast--;
+      bLast--;
+    }
+  }
+  return result.sort((a, b) => a - b);
 }
 
 /* ============================================= */
@@ -85,9 +162,21 @@ function getIntersection(first, second) {
  * @param  {string} right
  * @return {boolean}
  */
-function isIsomorphic(left, right) {
 
+function isIsomorphic(left, right) {
+  let flag = false;
+
+  if (right.length !== left.length) { return false; }
+
+  for (let i = 0; i < left.length; i++) {
+    if (left[i] !== right[i]) {
+      if (flag === true) { return false; }
+      flag = true;
+    }
+  }
+  return true;
 }
+
 
 module.exports = {
   timer,
