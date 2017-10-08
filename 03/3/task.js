@@ -5,8 +5,20 @@
  * @param {Array<Promise>} promises - массив с исходными промисами
  * @return {Promise}
  */
-function promiseAll(promises) {
+/* function promiseAll(promises) {
   return Promise.resolve(null);
+} */
+
+function promiseAll(promises) {
+  return new Promise((resolve, reject) => {
+    let arr = [],
+      finish = promises.length;
+
+    for (let i = 0; i < promises.length; i++) {
+      promises[i].then(result => { arr[i] = result; finish--; }, reject)
+        .then(() => { if (!finish) { resolve(arr); } });
+    }
+  });
 }
 
 module.exports = promiseAll;
