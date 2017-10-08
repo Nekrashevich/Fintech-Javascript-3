@@ -5,10 +5,6 @@
  * @param {Array<Promise>} promises - массив с исходными промисами
  * @return {Promise}
  */
-/* function promiseAll(promises) {
-  return Promise.resolve(null);
-} */
-
 function promiseAll(promises) {
   return new Promise((resolve, reject) => {
     let arr = [],
