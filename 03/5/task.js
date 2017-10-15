@@ -9,8 +9,7 @@ function romanicToArray(str) {
 
 const proto = Object.getPrototypeOf(Number.prototype);
 const p = new Proxy(proto, {
-  get: (target, name) =>
-    (romanicToArray(name) || target[name])
+  get: (target, name) => (name in target ? target[name] : romanicToArray(name))
 });
 
 Object.setPrototypeOf(Number.prototype, p);
