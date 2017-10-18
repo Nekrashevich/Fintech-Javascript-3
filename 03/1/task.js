@@ -1,4 +1,4 @@
-/**
+/** hi
  * Создайте класс, обладающий следующим поведением:
  * const values = ['hello', 'javascript', 'world'];
  * const instances = values.map(str => new NumberAndString(str));
@@ -10,7 +10,15 @@
  */
 class NumberAndString {
   constructor(str) {
+    this.str = str;
+  }
 
+  toString() {
+    return this.str;
+  }
+
+  valueOf() {
+    return this.str.length;
   }
 }
 

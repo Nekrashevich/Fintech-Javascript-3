@@ -1,8 +1,15 @@
-/**
- * Изменить поведение чисел таким образом, чтобы указанные конструкции были эквивалетны при условии,
- * что римские цифры могут быть любыми.
- * 0..V => [0, 1, 2, 3, 4]
- * 0..VII => [0, 1, 2, 3, 4, 5, 6]
- * 0..X => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
- * Подсказка - необходимо использовать Proxy - объекты
- * */
+function romanicToArray(str) {
+  const dict = { I: 1, IV: 4, V: 5, IX: 9, X: 10, XL: 40, L: 50, XC: 90, C: 100, CD: 400, D: 500, CM: 900, M: 1000 };
+  const length = str
+    .match(/(CM|CD|XC|XL|IX|IV|.)/g)
+    .reduce((sum, current) => sum + dict[current], 0);
+
+  return (isNaN(length)) ? undefined : [...Array(length).keys()];
+}
+
+const proto = Object.getPrototypeOf(Number.prototype);
+const p = new Proxy(proto, {
+  get: (target, name) => (name in target ? target[name] : romanicToArray(name))
+});
+
+Object.setPrototypeOf(Number.prototype, p);
