@@ -20,16 +20,16 @@ body {
 }
 
 .table1 tr:hover {
-  background: yellow;  
+  background: yellow;
 }
 
 .table1 th {
-  padding: 10px 0;    
+  padding: 10px 0;
   vertical-align: top;
 }
 
 .table1 td {
-  padding: 10px 0;  
+  padding: 10px 0;
 }
 
 .table1 td:first-child {
@@ -47,14 +47,26 @@ body {
   padding: 8px;
 }
 
-.table2 td:nth-child(1) {background: hsl(150, 50%, 50%);}
+.table2 td:nth-child(1) {
+  background: hsl(150, 50%, 50%);
+}
 
-.table2 td:nth-child(2) {background: hsl(160, 60%, 50%);}
+.table2 td:nth-child(2) {
+  background: hsl(160, 60%, 50%);
+}
 
-.table2 td:nth-child(3) {background: hsl(170, 70%, 50%);}
+.table2 td:nth-child(3) {
+  background: hsl(170, 70%, 50%);
+}
 
-.table2 td:nth-child(4) {background: hsl(180, 80%, 50%);}
+.table2 td:nth-child(4) {
+  background: hsl(180, 80%, 50%);
+}
 
-.table2 td:nth-child(5) {background: hsl(190, 90%, 50%);}
+.table2 td:nth-child(5) {
+  background: hsl(190, 90%, 50%);
+}
 
-.table2 td:nth-child(6) {background: hsl(200, 99%, 50%);}
+.table2 td:nth-child(6) {
+  background: hsl(200, 99%, 50%);
+}
