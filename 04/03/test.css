@@ -1,0 +1,29 @@
+html {
+  background: lightblue;
+}
+
+li {
+  list-style-type: none;
+  display: block;
+}
+
+ul li::before {
+  display: inline-block;
+  content: "\2022";
+  color: yellow;
+  width: 10px;
+}
+
+ol {
+  list-style-type: none;
+  counter-reset: item;
+}
+
+ol li::before {
+  display: inline-block;
+  content: counter(item) ".";
+  counter-increment: item;
+  color: blue;
+  margin-left: -10px;
+  margin-right: 5px;
+}
