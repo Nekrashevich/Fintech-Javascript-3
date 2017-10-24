@@ -38,6 +38,7 @@ function _keydown(evt){
   else {
     map.insertBefore(create(input.value), input);
     input.value = '';
+    input.placeholder='';
   } 
 }
 
@@ -47,6 +48,8 @@ function _remove(evt){
     return;
   }
   map.removeChild(evt.target.parentNode);
+  let tags = document.querySelectorAll('.tag');
+  if (tags.length==0) input.placeholder='Любые покупки';
 }
 
 function _catch() {
