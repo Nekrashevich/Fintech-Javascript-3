@@ -156,11 +156,18 @@ body {
 .tag-map {
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
   box-sizing: border-box;
   margin: 50px auto 67px;
   padding: 12px;
   border: solid 1px #dddfe0;
   border-radius: 6px;
+}
+
+.tag-edit {  
+  background: red;
+  padding: 20px 6px;
+  font-size: 13px;
 }
 
 .tag {
@@ -170,7 +177,7 @@ body {
   display: flex;
   height: 18px;
   align-items: center;
-  margin: 6px;
+  margin: 6px 0;
   padding: 12px 11px;
   padding-right: 50px;
   border-radius: 6px;
