@@ -114,6 +114,7 @@ body {
   border-radius: 6px;
   background-color: #ffdd2d;
   border: none;
+  outline: none;
   color: #333;
   text-align: center;
   font-size: 17px;
@@ -164,10 +165,10 @@ body {
   border-radius: 6px;
 }
 
-.tag-edit {  
-  background: red;
+.tag-edit {
   padding: 20px 6px;
   font-size: 13px;
+  outline: none;
 }
 
 .tag {
@@ -380,7 +381,7 @@ body {
   width: 258px;
   border: solid 1px #dddfe0;
   border-radius: 6px;
-  color: #333;
+  color: #74a3c7;
   font-size: 17px;
   /* stylelint-disable */
   font-family: Roboto, Arial, sans-serif;
@@ -406,12 +407,17 @@ body {
 
 .choice-radio {
   visibility: hidden;
+  position: absolute;
 }
 
 .choice-radio:checked ~ .choice-checked {
   box-sizing: border-box;
   border: 11px solid #ffdd2f;
   background-color: #3e4757;
+}
+
+.choice-radio:checked ~ .choice-text {
+  color: black;
 }
 
 .button-form {
