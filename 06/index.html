@@ -1,29 +1,164 @@
 <!DOCTYPE HTML>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet/less" type="text/css" href="./main.less" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
-    <title>Задание 6.1</title>
+<html lang="ru">
+<head>    
+  <title>Тинькофф</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,700&amp;subset=cyrillic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Сверстать полную страницу (без футера).</h1>
-<h4>Макеты:</h4>
-<ul>
-    <li><a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a307604687f0394b3ba039">Desktop 1</a></li>
-    <li><a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a3075a4ec334e848d7f333">Desktop 2</a></li>
-    <li><a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a3076d2fc6273f38fc51c5">Mobile 1</a></li>
-</ul>
-<h4>Особенности:</h4>
-<ul>
-    <li>Брейкпойнт для мобильной: 640px</li>
-    <li>До брейкпойнта верстка ломаться не должна, если ломается и никак иначе не избежать, ввести промежуточный брейкпойнт.</li>
-    <li>Использоваться БЭМ-нэйминг для классов.</li>
-    <li>Использовать less.</li>
-    <li>Повторяющиеся размера, цвета вынести в переменные.</li>
-    <li>Для элементов, у которых могут меняться состояние (цвет текста, бордер, фон, размер, позиция и тп), добавить transition.</li>
-    <li>Тултип также должен появляться с анимацией.</li>
-    <li>Для иконок использовать svg.</li>
-</ul>
+
+  <header class="header">
+    <img src="img/header-logo.svg" class="header-logo" alt="Тинькофф лого">    
+    <img src="img/header-logo-mobile.svg" class="header-logo-mobile" alt="Тинькофф лого">    
+    <a class="header-tel" href="tel:88005551122">8 800 555-11-22</a>   
+  </header>  
+  
+  <div class="main-menu">    
+    <ul class="menu">
+      <li class="menu-li"><a class="menu-link menu-link-active">КАРТЫ</a></li>
+      <li class="menu-li"><a class="menu-link" href="#">ВКЛАДЫ</a></li>
+      <li class="menu-li"><a class="menu-link" href="#">ПЛАТЕЖИ&nbsp;И&nbsp;ПЕРЕВОДЫ</a></li>
+      <li class="menu-li"><a class="menu-link" href="#">БОНУСЫ</a></li>
+      <li class="menu-li"><a class="menu-link" href="#">СТРАХОВАНИЕ</a></li>
+      <li class="menu-li"><a class="menu-link" href="#">О&nbsp;БАНКЕ</a></li>
+    </ul>    
+  </div>
+
+<div class="card">   
+  <div class="card-advise">  
+    <div class="card-side">
+      <div class="card-img">
+        <img src="img/cards.png" srcset="img/cards@2x.png 2x,img/cards@3x.png 3x" class="img" alt="card">
+      </div>
+    </div>    
+    <div class="card-side">
+      <div class="card-text">
+          <h1 class="card-text-header">Карты для&nbsp;вас<br>прямо сейчас</h1>
+          <div class="card-text-descript">
+            <span>Выбирайте карту, пользуйтесь<br>удобными сервисами</span>
+          </div>
+          <button class="button card-button" type="button">Оформить заявку</button>
+      </div>    
+    </div>  
+  </div>
+</div>
+
+  <div class="main-content">
+
+    <h2 class="h2 tag-header">Любые&nbsp;категории платежей</h2>    
+
+    <div class="tag-map">      
+      <div class="tag">
+        <span class="tag-text">Кафе</span>
+        <div class="tag-grad"></div>
+        <button class="tag-del" title="Удалить" type="button"></button>
+      </div>
+      
+      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag">
+        <span class="tag-text">Интернет</span>
+        <div class="tag-grad"></div>
+        <button class="tag-del" title="Удалить" type="button"></button>
+      </div>
+      
+      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag">
+        <span class="tag-text">Телефон</span>
+        <div class="tag-grad"></div>
+        <button class="tag-del" title="Удалить" type="button"></button>
+      </div>
+      
+      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag">
+        <span class="tag-text">Авто</span>
+        <div class="tag-grad"></div>
+        <button class="tag-del" title="Удалить" type="button"></button>
+      </div>
+      
+      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag">
+        <span class="tag-text">ЖКХ</span>
+        <div class="tag-grad"></div>
+        <button class="tag-del" title="Удалить" type="button"></button>
+      </div>
+      
+      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag">
+        <span class="tag-text">Одежда и обувь</span>
+        <div class="tag-grad"></div>
+        <button class="tag-del" title="Удалить" type="button"></button>
+      </div>
+      
+      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag">
+        <span class="tag-text">Супермаркеты, гастраномы, универмаги и всякие другие штуки</span>
+        <div class="tag-grad"></div>
+        <button class="tag-del" title="Удалить" type="button"></button>
+      </div>
+            
+      <input class="tag-input">
+    </div>
+    
+    
+    <h2 class="h2 form-header">Заполните&nbsp;несколько простых&nbsp;полей</h2>
+    
+    <form class="form">  
+      <div class="form-item">
+        <input id="fname" class="form-input fname" type="text" required>
+        <label class="form-label" for="fname">ФИО</label>
+      </div>
+      
+      <div class="form-item">
+        <input id="fcity" class="form-input fcity" type="text" required>
+        <label class="form-label" for="fcity">Город проживания</label>
+        <div id="alert" class="form-alert"></div>        
+      </div>
+      
+      <div id="alert-desc" class="form-alert-desc">
+        <span>Для заполнения этого поля не допустимо использовать буквы латинского алфавита</span>
+      </div> 
+      
+      <div class="form-item">
+        <input id="ftel" class="form-input ftel" type="tel" required>
+        <label class="form-label" for="ftel">Мобильный телефон</label>
+      </div>
+      
+      <div class="form-item">
+        <input id="femail" class="form-input femail" type="text" required>
+        <label class="form-label" for="femail">Электронная почта</label>
+        <div class="form-help">
+            <span class="form-help-desc">Ваши данные замаскированы в целях безопасности. Для изменения информации с вами свяжется оператор колл-центра.</span>
+        </div>
+      </div>    
+    </form>
+ 
+    <div class="main-choice">
+      <h3 class="choice-header">Выберите это или другое</h3>
+      <div class="choice">
+        <div class="choice-item">
+          <label class="choice-label" for="choice1">          
+            <input type="radio" id="choice1" class="choice-radio" name="choice" checked>
+            <span class="choice-text">Это</span>
+            <span class="choice-checked"></span>
+          </label>
+        </div>
+        
+        <div class="choice-item">
+          <label class="choice-label" for="choice2">
+            <input type="radio" id="choice2" class="choice-radio" name="choice">
+            <span class="choice-text">Другое</span>
+            <span class="choice-checked"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <button class="button button-form" type="submit">Отправить</button>   
+  </div>
+    
+<script src="js/app.js"></script>
 </body>
 </html>
