@@ -6,157 +6,159 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,700&amp;subset=cyrillic">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/less" href="main.less">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
 </head>
 <body>
 
   <header class="header">
-    <img src="img/header-logo.svg" class="header-logo" alt="Тинькофф лого">    
-    <img src="img/header-logo-mobile.svg" class="header-logo-mobile" alt="Тинькофф лого">    
-    <a class="header-tel" href="tel:88005551122">8 800 555-11-22</a>   
+    <img class="header__logo" src="img/header-logo.svg" alt="Тинькофф лого">    
+    <img class="header__logo_mobile" src="img/header-logo-mobile.svg" alt="Тинькофф лого">    
+    <a class="header__tel" href="tel:88005551122">8 800 555-11-22</a>   
+    <button class="header__hamburger" type="button"></button>
   </header>  
   
   <div class="main-menu">    
     <ul class="menu">
-      <li class="menu-li"><a class="menu-link menu-link-active">КАРТЫ</a></li>
-      <li class="menu-li"><a class="menu-link" href="#">ВКЛАДЫ</a></li>
-      <li class="menu-li"><a class="menu-link" href="#">ПЛАТЕЖИ&nbsp;И&nbsp;ПЕРЕВОДЫ</a></li>
-      <li class="menu-li"><a class="menu-link" href="#">БОНУСЫ</a></li>
-      <li class="menu-li"><a class="menu-link" href="#">СТРАХОВАНИЕ</a></li>
-      <li class="menu-li"><a class="menu-link" href="#">О&nbsp;БАНКЕ</a></li>
+      <li class="menu__li"><a class="menu__link menu__link_active">КАРТЫ</a></li>
+      <li class="menu__li"><a class="menu__link" href="#">ВКЛАДЫ</a></li>
+      <li class="menu__li"><a class="menu__link" href="#">ПЛАТЕЖИ&nbsp;И&nbsp;ПЕРЕВОДЫ</a></li>
+      <li class="menu__li"><a class="menu__link" href="#">БОНУСЫ</a></li>
+      <li class="menu__li"><a class="menu__link" href="#">СТРАХОВАНИЕ</a></li>
+      <li class="menu__li"><a class="menu__link" href="#">О&nbsp;БАНКЕ</a></li>
     </ul>    
   </div>
 
-<div class="card">   
-  <div class="card-advise">  
-    <div class="card-side">
-      <div class="card-img">
-        <img src="img/cards.png" srcset="img/cards@2x.png 2x,img/cards@3x.png 3x" class="img" alt="card">
-      </div>
-    </div>    
-    <div class="card-side">
-      <div class="card-text">
-          <h1 class="card-text-header">Карты для&nbsp;вас<br>прямо сейчас</h1>
-          <div class="card-text-descript">
-            <span>Выбирайте карту, пользуйтесь<br>удобными сервисами</span>
-          </div>
-          <button class="button card-button" type="button">Оформить заявку</button>
+  <div class="card">   
+    <div class="card__advise">  
+      <div class="card__side card__side_left">
+        <div class="card__img">
+          <img class="card__img-img" src="img/cards.png" srcset="img/cards@2x.png 2x,img/cards@3x.png 3x" alt="card">
+        </div>
       </div>    
-    </div>  
+      <div class="card__side">
+        <div class="card-text">
+            <h1 class="card-text__header">Карты для&nbsp;вас<br>прямо сейчас</h1>
+            <div class="card-text__descript">
+              <span>Выбирайте карту, пользуйтесь<br>удобными сервисами</span>
+            </div>
+            <button class="button button_card" type="button">Оформить заявку</button>
+        </div>    
+      </div>  
+    </div>
   </div>
-</div>
 
   <div class="main-content">
 
-    <h2 class="h2 tag-header">Любые&nbsp;категории платежей</h2>    
+    <h2 class="h2 main-content__header">Любые&nbsp;категории платежей</h2>    
 
     <div class="tag-map">      
       <div class="tag">
-        <span class="tag-text">Кафе</span>
-        <div class="tag-grad"></div>
-        <button class="tag-del" title="Удалить" type="button"></button>
+        <span class="tag__text">Кафе</span>
+        <div class="tag__grad"></div>
+        <button class="tag__del" title="Удалить" type="button"></button>
       </div>
       
-      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag__edit" contenteditable="true"></div>
       <div class="tag">
-        <span class="tag-text">Интернет</span>
-        <div class="tag-grad"></div>
-        <button class="tag-del" title="Удалить" type="button"></button>
+        <span class="tag__text">Интернет</span>
+        <div class="tag__grad"></div>
+        <button class="tag__del" title="Удалить" type="button"></button>
       </div>
       
-      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag__edit" contenteditable="true"></div>
       <div class="tag">
-        <span class="tag-text">Телефон</span>
-        <div class="tag-grad"></div>
-        <button class="tag-del" title="Удалить" type="button"></button>
+        <span class="tag__text">Телефон</span>
+        <div class="tag__grad"></div>
+        <button class="tag__del" title="Удалить" type="button"></button>
       </div>
       
-      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag__edit" contenteditable="true"></div>
       <div class="tag">
-        <span class="tag-text">Авто</span>
-        <div class="tag-grad"></div>
-        <button class="tag-del" title="Удалить" type="button"></button>
+        <span class="tag__text">Авто</span>
+        <div class="tag__grad"></div>
+        <button class="tag__del" title="Удалить" type="button"></button>
       </div>
       
-      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag__edit" contenteditable="true"></div>
       <div class="tag">
-        <span class="tag-text">ЖКХ</span>
-        <div class="tag-grad"></div>
-        <button class="tag-del" title="Удалить" type="button"></button>
+        <span class="tag__text">ЖКХ</span>
+        <div class="tag__grad"></div>
+        <button class="tag__del" title="Удалить" type="button"></button>
       </div>
       
-      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag__edit" contenteditable="true"></div>
       <div class="tag">
-        <span class="tag-text">Одежда и обувь</span>
-        <div class="tag-grad"></div>
-        <button class="tag-del" title="Удалить" type="button"></button>
+        <span class="tag__text">Одежда и обувь</span>
+        <div class="tag__grad"></div>
+        <button class="tag__del" title="Удалить" type="button"></button>
       </div>
       
-      <div class="tag-edit" contenteditable="true"></div>
+      <div class="tag__edit" contenteditable="true"></div>
       <div class="tag">
-        <span class="tag-text">Супермаркеты, гастраномы, универмаги и всякие другие штуки</span>
-        <div class="tag-grad"></div>
-        <button class="tag-del" title="Удалить" type="button"></button>
+        <span class="tag__text">Супермаркеты, гастраномы, универмаги и всякие другие штуки</span>
+        <div class="tag__grad"></div>
+        <button class="tag__del" title="Удалить" type="button"></button>
       </div>
             
-      <input class="tag-input">
+      <input class="tag__input">
     </div>
     
     
-    <h2 class="h2 form-header">Заполните&nbsp;несколько простых&nbsp;полей</h2>
+    <h2 class="h2 form__header">Заполните&nbsp;несколько простых&nbsp;полей</h2>
     
     <form class="form">  
-      <div class="form-item">
-        <input id="fname" class="form-input fname" type="text" required>
-        <label class="form-label" for="fname">ФИО</label>
+      <div class="form__item">
+        <input id="fname" class="form__input fname" type="text" required>
+        <label class="form__label" for="fname">ФИО</label>
       </div>
       
-      <div class="form-item">
-        <input id="fcity" class="form-input fcity" type="text" required>
-        <label class="form-label" for="fcity">Город проживания</label>
-        <div id="alert" class="form-alert"></div>        
+      <div class="form__item">
+        <input id="fcity" class="form__input fcity" type="text" required>
+        <label class="form__label" for="fcity">Город проживания</label>
+        <div id="alert" class="form__alert"></div>        
       </div>
       
-      <div id="alert-desc" class="form-alert-desc">
+      <div id="alert-desc" class="form__alert-desc">
         <span>Для заполнения этого поля не допустимо использовать буквы латинского алфавита</span>
       </div> 
       
-      <div class="form-item">
-        <input id="ftel" class="form-input ftel" type="tel" required>
-        <label class="form-label" for="ftel">Мобильный телефон</label>
+      <div class="form__item">
+        <input id="ftel" class="form__input ftel" type="tel" required>
+        <label class="form__label" for="ftel">Мобильный телефон</label>
       </div>
       
-      <div class="form-item">
-        <input id="femail" class="form-input femail" type="text" required>
-        <label class="form-label" for="femail">Электронная почта</label>
-        <div class="form-help">
-            <span class="form-help-desc">Ваши данные замаскированы в целях безопасности. Для изменения информации с вами свяжется оператор колл-центра.</span>
+      <div class="form__item">
+        <input id="femail" class="form__input femail" type="text" required>
+        <label class="form__label" for="femail">Электронная почта</label>
+        <div class="form__help">
+            <span class="form__help-desc">Ваши данные замаскированы в целях безопасности. Для изменения информации с вами свяжется оператор колл-центра.</span>
         </div>
       </div>    
     </form>
  
     <div class="main-choice">
-      <h3 class="choice-header">Выберите это или другое</h3>
+      <h3 class="main-choice__header">Выберите это или другое</h3>
       <div class="choice">
-        <div class="choice-item">
-          <label class="choice-label" for="choice1">          
-            <input type="radio" id="choice1" class="choice-radio" name="choice" checked>
-            <span class="choice-text">Это</span>
-            <span class="choice-checked"></span>
+        <div class="choice__item">
+          <label class="choice__label" for="choice1">          
+            <input type="radio" id="choice1" class="choice__radio" name="choice" checked>
+            <span class="choice__text">Это</span>
+            <span class="choice__checked"></span>
           </label>
         </div>
         
-        <div class="choice-item">
-          <label class="choice-label" for="choice2">
-            <input type="radio" id="choice2" class="choice-radio" name="choice">
-            <span class="choice-text">Другое</span>
-            <span class="choice-checked"></span>
+        <div class="choice__item">
+          <label class="choice__label" for="choice2">
+            <input type="radio" id="choice2" class="choice__radio" name="choice">
+            <span class="choice__text">Другое</span>
+            <span class="choice__checked"></span>
           </label>
         </div>
       </div>
     </div>
 
-    <button class="button button-form" type="submit">Отправить</button>   
+    <button class="button button_form" type="submit">Отправить</button>   
   </div>
     
 <script src="js/app.js"></script>

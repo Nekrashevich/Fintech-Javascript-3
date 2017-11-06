@@ -1,5 +1,5 @@
 let map = document.querySelector('.tag-map'),
-    input = document.querySelector('.tag-input'),
+    input = document.querySelector('.tag__input'),
     _fcity = document.querySelector('.fcity'),
     _alert = document.querySelector('#alert-desc'),
     _desc = document.querySelector('#alert');
@@ -17,9 +17,9 @@ function create(tagValue) {
   
   // Add class to new element
   _tag.classList.add('tag');  
-  _text.classList.add('tag-text');
-  _grad.classList.add('tag-grad');
-  _del.classList.add('tag-del');
+  _text.classList.add('tag__text');
+  _grad.classList.add('tag__grad');
+  _del.classList.add('tag__del');
   
   // Add child-dependencies to new tag
   _tag.appendChild(_text);  
